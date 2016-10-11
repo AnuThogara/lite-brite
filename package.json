@@ -13,5 +13,13 @@
     "express": "^4.14.0"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnuThogara/lite-brite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AnuThogara/lite-brite/issues"
+  },
+  "homepage": "https://github.com/AnuThogara/lite-brite#readme",
   "description": ""
 }

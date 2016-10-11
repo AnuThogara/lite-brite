@@ -1,20 +1,58 @@
 (function() { //iife
 
+
+    //load forms polyfill + iVal feature
+    //    webshim.polyfill('forms');
+
     // var numberOfRows = 15;
     // var numberOfCols = 15; //number of columns in a grid
-    var canvas = $('#canvas'); //my placement area thiunk of paper drawing
+    var canvas = $('#canvas');
+    //my placement area thiunk of paper drawing
     // let's make some rows and put them in the body
-    makeGrid(15,15);
-    clearGrid();
-    makeGrid(30,30);
-    $('.cell').on('click', changeColor);
+    var updateGridButton = $('#update-grid-button');
+    var numberOfColsInput = $('#number-of-cols');
+    var numberOfRowsInput = $('#number-of-rows');
+    var maxVal = 200;
+    var colorClass = ['red', 'green', 'blue', 'yellow', 'black'];
+    var valclick = 0;
+    //numberOfRowsInput.on('change',validateRow);
+    makeGrid(15, 15);
 
-    function clearGrid(){
-      canvas.empty();
+    // clearGrid();
+    // makeGrid(4,4);
+    $('.cell').on('click', changeColor);
+    updateGridButton.on('click', updateGridSize);
+
+    function updateGridSize() {
+        clearGrid(); //remove the current grid, grab the number columns input to the new grid and grab the no of rows to the new grid
+        var newColNumber = parseInt(numberOfColsInput.val());
+
+
+        var newRowNumber = parseInt(numberOfRowsInput.val());
+        //make the new grid based on input cols and rows
+        // makeGrid(newRowNumber, newColNumber);
+        if (newColNumber <= 30 && newRowNumber <= 30) {
+            makeGrid(newRowNumber, newColNumber);
+            $('.cell').on('click', changeColor);
+        }
+        else{
+          makeGrid(15, 15);
+          $('.cell').on('click', changeColor);
+        }
+
     }
 
-    function changeColor(event){
-      $(this).toggleClass('red');
+    function clearGrid() {
+        canvas.empty();
+    }
+
+    function changeColor(event) {
+      $(this).toggleClass(colorClass[valclick]);
+        if (valclick == 4) {
+            valclick = 0;
+        } else {
+            valclick = valclick + 1;
+        }
     }
 
     function makeGrid(numberOfRows, numberOfCols) {
@@ -27,6 +65,21 @@
                 row.append(column);
             }
             canvas.append(row);
+        }
+    }
+
+    function validateRow() {
+        if (!validate(parseInt(numberOfRowsInput.val()), maxVal)) {
+            alert("range exceeded");
+        }
+
+    }
+
+    function validate(value, maxValue) {
+        if (value <= maxValue) {
+            makeGrid();
+        } else {
+            return false;
         }
     }
 
