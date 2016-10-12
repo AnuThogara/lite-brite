@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lite-Brite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.minicolors/2.1.2/jquery.minicolors.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -16,26 +17,36 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="number-of-rows">please enter Number Of Rows:</label>
+                        <label for="number-of-rows"> Enter Number Of Rows:</label>
                         <input type="number" id="number-of-rows" class="form-control" min="1" max="30" required/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="number-of-cols">Please Enter Number of Columns:</label>
+                        <label for="number-of-cols"> Enter Number of Columns:</label>
                         <input type="number" id="number-of-cols" class="form-control" min="1" max="30" required/>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button id="update-grid-button" class="btn btn-success" >Update Grid Size</button>
+                    <div class="form-group">
+                        <label for="hue-demo">Please pick a color:</label>
+                        <input type="color" id="idColor1" class="form-control" />
+                      <!--  <input type="text" id="idColor1" class="form-control demo" value="#ff6161">-->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button id="update-grid-button" class="btn btn-success">Update Grid Size</button>
                 </div>
             </div>
             <table id="canvas"></table>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.minicolors/2.1.2/jquery.minicolors.min.js"></script>
         <script src="js/app.js"></script>
 
     </form>
+
+
 </body>
 
 </html>

@@ -12,9 +12,11 @@
     var updateGridButton = $('#update-grid-button');
     var numberOfColsInput = $('#number-of-cols');
     var numberOfRowsInput = $('#number-of-rows');
+    var selectColor = $('#idColor1');
     var maxVal = 200;
     var colorClass = ['red', 'green', 'blue', 'yellow', 'black'];
     var valclick = 0;
+
     //numberOfRowsInput.on('change',validateRow);
     makeGrid(15, 15);
 
@@ -47,15 +49,32 @@
     }
 
     function changeColor(event) {
-      $(this).toggleClass(colorClass[valclick]);
+      var currentColor = $(this).css("background-color");
+      $(this).css("background-color",selectColor.val());
+      if(currentColor==$(this).css("background-color"))
+        $(this).css("background-color","white");
+//      $(this).toggleClass(selectColor.val());
+      //$(this).toggleClass(colorClass[valclick]);
         if (valclick == 4) {
             valclick = 0;
         } else {
             valclick = valclick + 1;
         }
     }
-
     function makeGrid(numberOfRows, numberOfCols) {
+        for (var rowCount = 0; rowCount < numberOfRows; rowCount += 1) {
+            var row = $('<tr> </tr>');
+            for (var colCount = 0; colCount < numberOfCols; colCount += 1) {
+                var column = $('<td> </td>');
+                //column inside a row
+                column.addClass('cell');
+                row.append(column);
+            }
+    
+            canvas.append(row);
+        }
+    }
+    function makeTGrid(numberOfRows, numberOfCols) {
         for (var rowCount = 0; rowCount < numberOfRows; rowCount += 1) {
             var row = $('<tr> </tr>');
             for (var colCount = 0; colCount < numberOfCols; colCount += 1) {
@@ -67,6 +86,7 @@
             canvas.append(row);
         }
     }
+
 
     function validateRow() {
         if (!validate(parseInt(numberOfRowsInput.val()), maxVal)) {
@@ -82,5 +102,24 @@
             return false;
         }
     }
+    //color picker function
+
+        var colpick = $('.demo').each(function() {
+            $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                inline: $(this).attr('data-inline') === 'true',
+                letterCase: 'lowercase',
+                opacity: false,
+                change: function(hex, opacity) {
+                    if (!hex) return;
+                    if (opacity) hex += ', ' + opacity;
+                    try {
+                        console.log(hex);
+                    } catch (e) {}
+                    $(this).select();
+                },
+                theme: 'bootstrap'
+            });
+        });
 
 }());
