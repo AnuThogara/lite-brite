@@ -9,27 +9,48 @@
   height: 16px;
   border: 0px solid white;
 }
-.red
-{
-  background-color: red;
+
+#lite-header{
+  background-color: lightskyblue;
+  margin-top: 5px;
+  height:60px;
+  padding-left: 700px;
 }
-.blue
-{
-  background-color: blue;
+h3{
+  font-weight: bolder;
+  color: red;
+  font-size: 2.6em;
+  text-shadow: 4px 4px 5px black;
 }
-.yellow
-{
-  background-color: yellow;
+body{
+  background-color: #f5f5ef;
+  margin: 0px auto;
+  padding: 0px;
 }
-.green
+.t1
 {
-  background-color: green;
+  width: 10000px;
+  position: relative;
 }
-.black
+.t2
 {
-  background-color: black;
+  position: absolute;
 }
-.abc
+.rectangle
 {
-  background-color: orange;
+   width: 300px;
+   height: 20px;
+   display: block;
+   position: relative;
+   border: 1px solid black;
+   margin: 20px 0;
+}
+
+.square-small
+{
+   display: block;
+   width: 20px;
+   height: 20px;
+   position: absolute;
+   background-color: red;
 }

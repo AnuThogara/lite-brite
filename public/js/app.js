@@ -1,9 +1,6 @@
 (function() { //iife
-
-
     //load forms polyfill + iVal feature
     //    webshim.polyfill('forms');
-
     // var numberOfRows = 15;
     // var numberOfCols = 15; //number of columns in a grid
     var canvas = $('#canvas');
@@ -70,9 +67,39 @@
                 column.addClass('cell');
                 row.append(column);
             }
-    
+
             canvas.append(row);
         }
+        $('.t1')
+           .find('.t2')
+           .animate({
+                 left: 300
+              },
+              'slow'
+           );
+           $('.t1')
+              .find('.t2')
+              .animate({
+                    top: 300,
+                 },
+                 'slow'
+              );
+              $('.t1')
+                 .find('.t2')
+                 .animate({
+                       left: 0
+                    },
+                    'slow'
+                 );
+                 $('.t1')
+                    .find('.t2')
+                    .animate({
+                          top: 0
+                       },
+                       'slow'
+                    );
+                   canvas.fadeOut();
+        canvas.fadeIn();
     }
     function makeTGrid(numberOfRows, numberOfCols) {
         for (var rowCount = 0; rowCount < numberOfRows; rowCount += 1) {
